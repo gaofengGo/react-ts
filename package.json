@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/styled-components": "4.1.8",
+    "bizcharts": "^3.5.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts-ts": "3.1.0",

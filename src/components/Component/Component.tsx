@@ -1,17 +1,13 @@
-import * as React from "react";
+import React, {useState, useEffect, useRef} from "react";
 import styled from "styled-components";
 
-class Xxx extends React.Component {
-  public render() {
-    return (
-      <div>
-        container
-        <h2>title</h2>
-        <div>body</div>
-      </div>
-    );
-  }
-}
+const Xxx = (props: any) => (
+  <div>
+    container
+    <h2>title</h2>
+    <div>body</div>
+  </div>
+)
 
 const StyledComponent = styled(Xxx)`
   & {

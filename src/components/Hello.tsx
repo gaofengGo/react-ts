@@ -1,32 +1,17 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import './Hello.css'
+import styled from "styled-components";
 
 export interface Props {
   name: string;
   enthusiasmLevel?: number;
 }
 
-function Hello({ name, enthusiasmLevel = 1 }: Props) {
-  if (enthusiasmLevel <= 0) {
-    throw new Error('You could be a little more enthusiastic. :D');
-  }
-
-  return (
-    <div className="hello">
-      <div className="greeting">
-        Hello {name + getExclamationMarks(enthusiasmLevel)}
-      </div>
-    </div>
-  );
-}
-
-const StyledHello = styled(Hello)`
-  &{
+const StyledHello = styled.div`
+  .hello {
     text-align: center;
     margin: 20px;
     font-size: 48px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     button {
       margin-left: 25px;
       margin-right: 25px;
@@ -34,11 +19,31 @@ const StyledHello = styled(Hello)`
       min-width: 50px;
     }
   }
-`
-export default StyledHello;
+`;
+
+const Hello = (props: Props) => {
+  const { name, enthusiasmLevel = 1 } = props;
+  const [sex, setSex] = React.useState('woma');
+  
+  if (enthusiasmLevel <= 0) {
+    setSex('man')
+    throw new Error("You could be a little more enthusiastic. :D");
+  }
+  const getExclamationMarks = (numChars: number) => {
+    return Array(numChars + 1).join("!");
+  };
+  return (
+    <StyledHello>
+      <div className="hello">
+        <div className="greeting">
+          Hello {name + getExclamationMarks(enthusiasmLevel)}
+          {sex}
+        </div>
+      </div>
+    </StyledHello>
+  );
+};
+
+export default Hello;
 
 // helpers
-
-function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
-}
